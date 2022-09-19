@@ -1,9 +1,12 @@
 import './app.css';
+import { Nav } from './component';
+import Chat from './pages/Chat';
+
 function App() {
   return (
     <div className="App">
-      <h1>Start work</h1>
-      <p>okay</p>
+      <Nav />
+      <Chat />
     </div>
   );
 }
