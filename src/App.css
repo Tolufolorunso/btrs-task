@@ -36,7 +36,6 @@ body {
   line-height: 1.5;
   font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
-  background-color: white;
 }
 
 /* A elements that don't have a class get default styles */
@@ -66,4 +65,43 @@ svg {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.container {
+  width: min(1120px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.overlay {
+  z-index: 1;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.formGroup input,
+.msg-box {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  outline: none;
+  width: 100%;
+  padding: 8px 10px;
+}
+
+.btn {
+  font: inherit;
+  padding: 10px 30px;
+  border-radius: 3px;
+  text-align: center;
+  width: 100%;
+  color: green;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease-in;
+}
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
