@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const addChatToLocalStorage = (data) => {
   let res = window.localStorage.getItem('chats');
   let msg;
-  if (res === null) {
+  if (!res) {
     msg = [data];
     window.localStorage.setItem('chats', JSON.stringify(msg));
   } else {
     msg = JSON.parse(res);
-    msg.push(data);
+    msg = [data, ...msg];
     localStorage.setItem('chats', JSON.stringify(msg));
   }
 };
