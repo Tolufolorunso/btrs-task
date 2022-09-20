@@ -1,7 +1,9 @@
 import NavWrapper from './nav.styled';
 import DefualtImage from '../assets/images/default.png';
+import { useSelector } from 'react-redux';
 
 const Nav = () => {
+  const { username } = useSelector((store) => store.chat);
   return (
     <NavWrapper>
       <div className="container">
@@ -13,7 +15,7 @@ const Nav = () => {
             <div className="avater">
               <img src={DefualtImage} alt="name" />
             </div>
-            <div className="profile-name">tolulope</div>
+            <div className="profile-name">{username}</div>
           </div>
         </div>
       </div>
