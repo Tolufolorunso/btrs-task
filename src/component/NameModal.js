@@ -1,10 +1,10 @@
 import ModalWrapper from './nameModal.styled';
 
-const NameModal = ({ handleChange, username, handleSubmit }) => {
+const NameModal = ({ handleChange, username, handleAddUser }) => {
   return (
     <ModalWrapper>
       <h2>Enter Your Room Name</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleAddUser}>
         <div className="formGroup">
           <input
             type="text"

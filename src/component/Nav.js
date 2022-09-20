@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Nav = () => {
   const { username } = useSelector((store) => store.chat);
+
   return (
     <NavWrapper>
       <div className="container">

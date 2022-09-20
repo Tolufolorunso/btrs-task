@@ -31,6 +31,7 @@ const ChatWrapper = styled.div`
     display: block;
     z-index: 2;
     box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 100%;
   }
   .chat-box .avatar img {
     width: 100%;
@@ -39,10 +40,9 @@ const ChatWrapper = styled.div`
     border-radius: 100%;
   }
 
-
-
   .otherUser .msg {
     background-color: purple;
+    color: white;
     order: 1;
     border-top-left-radius: 0px;
     box-shadow: -1px 2px 0px #d4d4d4;
@@ -53,7 +53,7 @@ const ChatWrapper = styled.div`
   .otherUser .msg:before {
     content: '';
     position: relative;
-    top: -6px;
+    top: -3px;
     right: 0px;
     left: -15px;
     width: 0px;
@@ -74,6 +74,7 @@ const ChatWrapper = styled.div`
     box-shadow: 1px 2px 0px #d4d4d4;
     background-color: #d4d4d4;
     margin-right: 10px;
+    color: purple;
   }
   .me .avatar {
     order: 2;
@@ -100,20 +101,21 @@ const ChatWrapper = styled.div`
     border-radius: 2px;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
-  .msg p {
-    font-size: 0.8rem;
-    margin: 0 0 0.2rem 0;
+
+  .msg span {
+    font-size: 0.7rem;
+    font-weight: 200;
+    margin: 0 0 0 0;
     color: #777;
+    text-transform: lowercase;
+    font-style: italic;
   }
-  .msg img {
-    position: relative;
-    display: block;
-    width: 450px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px #eee;
-    transition: all 0.4s cubic-bezier(0.565, -0.26, 0.255, 1.41);
-    cursor: default;
+
+  .me .msg span {
+    align-self: flex-end;
   }
 `;
 
