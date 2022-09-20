@@ -11,7 +11,7 @@ const Chat = () => {
   const [chat, setChat] = useState('');
   const [allChats, setAllChats] = useState([]);
   const containerRef = useRef(null);
-  const [numOfChatPerPage, setNumOfChatPerPage] = useState(4);
+  const [numOfChatPerPage, setNumOfChatPerPage] = useState(25);
 
   const handleChange = (e) => {
     setUser(e.target.value);
@@ -61,10 +61,6 @@ const Chat = () => {
   const handleScroll = (e) => {
     let el = e.target;
     if (el.scrollTop === 0) {
-      // el.scroll({
-      //   bottom: el.scrollHeight,
-      //   behavior: 'smooth',
-      // });
       getChats().then((data) => {
         setNumOfChatPerPage(numOfChatPerPage + 4);
         setAllChats(getMessagesArr(data).reverse());
