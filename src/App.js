@@ -1,6 +1,6 @@
-import './app.css';
 import { Nav } from './component';
 import Chat from './pages/Chat';
+import './app.css';
 
 function App() {
   return (

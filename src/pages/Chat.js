@@ -27,6 +27,7 @@ const Chat = () => {
         </>
       ) : (
         <ul className="chat-box">
+          <Message userType="me" msg="Hello" username="kola" />
           <Message
             userType="otherUser"
             msg="Note that the development build is not optimized.
@@ -34,7 +35,6 @@ To create a production build, use npm run build."
             username="kola"
           />
           <Message userType="otherUser" msg="Hello" username="kola" />
-          <Message userType="me" msg="Hello" username="kola" />
           <Message userType="otherUser" msg="Hello" username="kola" />
           <Message
             userType="me"

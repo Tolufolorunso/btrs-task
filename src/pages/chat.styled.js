@@ -13,9 +13,9 @@ const ChatWrapper = styled.div`
   .chat-box {
     list-style: none;
     background: none;
-    margin: 0;
+    /* margin: 0; */
     padding: 0 1rem 5rem 1rem;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     margin-bottom: 10px;
   }
 
@@ -39,11 +39,13 @@ const ChatWrapper = styled.div`
     border-radius: 100%;
   }
 
+
+
   .otherUser .msg {
+    background-color: purple;
     order: 1;
     border-top-left-radius: 0px;
     box-shadow: -1px 2px 0px #d4d4d4;
-    background-color: purple;
     margin-left: 10px;
     margin-top: 20px;
     border-radius: 0 3px 3px 3px;
@@ -67,10 +69,10 @@ const ChatWrapper = styled.div`
     align-items: flex-end;
   }
   .me .msg {
-    order: 1;
+    /* order: 1; */
     border-bottom-right-radius: 0px;
     box-shadow: 1px 2px 0px #d4d4d4;
-    background-color: purple;
+    background-color: #d4d4d4;
     margin-right: 10px;
   }
   .me .avatar {
@@ -85,7 +87,7 @@ const ChatWrapper = styled.div`
     right: 13px;
     width: 0px;
     height: 0px;
-    border: 5px solid purple;
+    border: 5px solid #d4d4d4;
     border-right-color: transparent;
     border-bottom-color: transparent;
     /* box-shadow: 0px 2px 0px #d4d4d4; */
@@ -97,6 +99,7 @@ const ChatWrapper = styled.div`
     padding: 10px;
     border-radius: 2px;
     box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.07);
+    flex: 1;
   }
   .msg p {
     font-size: 0.8rem;
