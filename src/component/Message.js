@@ -1,7 +1,6 @@
 import DefualtImage from '../assets/images/default.png';
 
 const Message = ({ userType, msg, username }) => {
-  console.log(username);
   return (
     <li className={userType}>
       <div className="avatar">

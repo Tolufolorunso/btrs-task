@@ -11,11 +11,18 @@ const Chat = () => {
   const [chat, setChat] = useState('');
   const [allChats, setAllChats] = useState([]);
   const containerRef = useRef(null);
+  const [numOfChatPerPage, setNumOfChatPerPage] = useState(25);
+
   const handleChange = (e) => {
     setUser(e.target.value);
   };
+
   const handleChat = (e) => {
     setChat(e.target.value);
+  };
+
+  const getMessagesArr = (arr) => {
+    return arr.slice(0, numOfChatPerPage);
   };
 
   const handleAddUser = (e) => {
@@ -36,12 +43,30 @@ const Chat = () => {
 
   function storageEventHandler() {
     let message = JSON.parse(localStorage.getItem('chat'));
-    console.log(message.user, user);
     if (message.user !== user) {
-      setAllChats([...allChats, message]);
-      console.log('hi from storageEventHandler');
+      setAllChats(getMessagesArr([...allChats, message]));
     }
   }
+
+  const handleSendMsg = (e) => {
+    e.preventDefault();
+    if (!chat) return;
+    dispatch(sendMessage({ user, chat, id: Math.random() }));
+    setAllChats(
+      getMessagesArr([...allChats, { chat, user, id: Math.random() }])
+    );
+    setChat('');
+  };
+
+  const handleScroll = (e) => {
+    let el = e.target;
+    if (el.scrollTop === 0) {
+      getChats().then((data) => {
+        setNumOfChatPerPage(numOfChatPerPage + 4);
+        setAllChats(getMessagesArr(data).reverse());
+      });
+    }
+  };
 
   useEffect(() => {
     window.addEventListener('storage', storageEventHandler, false);
@@ -53,31 +78,24 @@ const Chat = () => {
 
   useEffect(() => {
     getChats().then((data) => {
-      setAllChats(data);
+      setAllChats(getMessagesArr(data.slice(0, 4)).reverse());
     });
+    // eslint-disable-next-line
   }, []);
-
-  const handleSendMsg = (e) => {
-    e.preventDefault();
-    if (!chat) return;
-    dispatch(sendMessage({ user, chat, id: Math.random() }));
-    setAllChats([...allChats, { chat, user, id: Math.random() }]);
-    setChat('');
-  };
 
   useEffect(() => {
     if (containerRef && containerRef.current) {
-      const element = containerRef.current;
-      console.log(element.scrollHeight);
-      element.scroll({
-        top: element.scrollHeight,
+      const el = containerRef.current;
+      el.scroll({
+        top: el.scrollHeight,
         left: 0,
         behavior: 'smooth',
       });
     }
   }, [containerRef, message]);
+
   return (
-    <ChatWrapper ref={containerRef}>
+    <ChatWrapper ref={containerRef} onScroll={handleScroll}>
       {!username ? (
         <>
           <div className="overlay"></div>
@@ -89,7 +107,7 @@ const Chat = () => {
         </>
       ) : (
         <>
-          <ul className="chat-box">
+          <ul className="chat-box" onScroll={handleScroll}>
             {allChats.map((chat) => {
               return (
                 <Message
